@@ -27,18 +27,35 @@ app.get('/:datetime', function(req, res) {
   //console.log(req.params.datetime);
   var dateTimeObj = {};
   if (isNaN(req.params.datetime)) {
+      console.log('yes');
       var dateTime = new Date(req.params.datetime*1000);
       var year = dateTime.getFullYear();
-      var month = months[dateTime.getMonth()];
+      var month = date.getMonth();
       var date = dateTime.getDate();
-      var hour = a.getHours();
+      var hour = dateTime.getHours();
       var min = dateTime.getMinutes();
       var sec = dateTime.getSeconds();
       var dateAndTime = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-      dateTimeObj = {unix: req.params.datetime, natural: dateAndTime}
-      res.send();
+      dateTimeObj = {unix: req.params.datetime, natural: dateAndTime};
+      res.send(dateTimeObj);
   }
-  res.send('hey');
+  else {
+    console.log('no');
+    var dateTime = new Date(req.params.datetime*1000);
+    var year = dateTime.getFullYear();
+    var month = dateTime.getMonth();
+    var date = dateTime.getDate();
+    //var hour = dateTime.getHours();
+    //var min = dateTime.getMinutes();
+    //var sec = dateTime.getSeconds();
+    //var dateAndTime = month + ' ' + date + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+    var monthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var fullDate = monthName[month] + ' ' + date + ', ' + year;
+    //dateTimeObj = {unix: req.params.datetime, natural: dateAndTime};
+    dateTimeObj = {unix: req.params.datetime, natural: fullDate};
+    res.send(dateTimeObj);
+  }
+  //res.send('hey');
 });
 
 app.use('/public', express.static(process.cwd() + '/public'));
