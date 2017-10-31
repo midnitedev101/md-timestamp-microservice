@@ -24,8 +24,8 @@ if (!process.env.DISABLE_XORIGIN) {
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
-app.use('/', function (req, res) {
-  
+app.use('/hello', function (req, res) {
+  console.log(req.baseUrl);
   res.send('GET request to the homepage')
 });
 
