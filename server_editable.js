@@ -25,10 +25,12 @@ if (!process.env.DISABLE_XORIGIN) {
 
 app.get('/:datetime', function(req, res) {
   //console.log(req.params.datetime);
+  var monthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   if (isNaN(req.params.datetime)) {
-      console.log('yes');
-      console.log(req.params.datetime);
-      
+      var dateParamArr = (req.params.datetime).split(" ");
+      console.log(dateParamArr[0]);
+      console.log(monthName.indexOf(dateParamArr[0]));
+      //if(monthName.indexOf(dateParamArr))
       //var unixTime = url.substring( url.indexOf('?') + 1 );
       //console.log(unixTime);
       //var unixTimeObj = {unix: unixtime, natural: req.params.datetime};
@@ -44,7 +46,6 @@ app.get('/:datetime', function(req, res) {
     //var min = dateTime.getMinutes();
     //var sec = dateTime.getSeconds();
     //var dateAndTime = month + ' ' + date + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-    var monthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var fullDate = monthName[month] + ' ' + date + ', ' + year;
     //dateTimeObj = {unix: req.params.datetime, natural: dateAndTime};
     dateTimeObj = {unix: req.params.datetime, natural: fullDate};
