@@ -24,7 +24,7 @@ if (!process.env.DISABLE_XORIGIN) {
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
-app.get('/user', function (req, res, next) {
+app.get('/userss', function (req, res, next) {
   res.send('USERs')
 })
 
