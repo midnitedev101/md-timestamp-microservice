@@ -30,9 +30,15 @@ app.get('/:datetime', function(req, res) {
       var dateParamArr = (req.params.datetime).split(" ");
       //console.log(dateParamArr[0]);
       //console.log(monthName.indexOf(dateParamArr[0]));
-    
+      //var verMonth = dateParamArr[0] + 1;
+      //console.log(verMonth);
       if(monthName.indexOf(dateParamArr[0]) !== -1) {
-        var monthNum = monthName.indexOf(dateParamArr[0]).toString();
+        //var monthNum = monthName.indexOf(dateParamArr[0]).toString();
+        var monthNum = monthName.indexOf(dateParamArr[0]);
+        monthNum += 1;
+        monthNum = monthNum.toString();
+        console.log(monthNum);
+        
         if(monthNum.length < 2) {
           monthNum = "0" + monthNum;
           //console.log(monthNum);
@@ -41,6 +47,9 @@ app.get('/:datetime', function(req, res) {
         //var unixTime = new Date('' + monthName.indexOf(dateParamArr[0] + 1) + ' ' + dateParamArr[1] + ' ' + dateParamArr[2]);
         var unixTime = new Date(monthNum + ' ' + dateParamArr[1] + ' ' + dateParamArr[2]);
         console.log(unixTime);
+        //res.send(Date.parse(unixTime));
+        var unixTimeObj = {unix: Date.parse(unixTime), natural: req.params.datetime};
+        res.send(unixTimeObj)
       }
       //var unixTime = url.substring( url.indexOf('?') + 1 );
       //console.log(unixTime);
