@@ -5,7 +5,7 @@
 	},
 	"main": "server_editable.js",
 	"scripts": {
-		"start": "node server.js"
+		"start": "node server_editable.js"
 	},
 	"engines": {
 		"node": "4.4.5"

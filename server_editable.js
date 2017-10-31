@@ -24,8 +24,10 @@ if (!process.env.DISABLE_XORIGIN) {
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
-app.get('/userss', function (req, res, next) {
-  res.send('USERs')
+app.use('/custom', function (req, res, next) {
+  console.log('Time:', Date.now())
+  //res.send('heello');
+  next()
 })
 
 app.route('/_api/package.json')
