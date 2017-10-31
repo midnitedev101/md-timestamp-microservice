@@ -28,9 +28,13 @@ app.get('/:datetime', function(req, res) {
   var monthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   if (isNaN(req.params.datetime)) {
       var dateParamArr = (req.params.datetime).split(" ");
-      console.log(dateParamArr[0]);
-      console.log(monthName.indexOf(dateParamArr[0]));
-      //if(monthName.indexOf(dateParamArr))
+      //console.log(dateParamArr[0]);
+      //console.log(monthName.indexOf(dateParamArr[0]));
+    
+      if(monthName.indexOf(dateParamArr[0]) !== -1) {
+        var unixTime = new Date('' + monthName.indexOf(dateParamArr[0]) + ' ' + dateParamArr[1] + ' ' + dateParamArr[2]);
+        console.log(unixTime);
+      }
       //var unixTime = url.substring( url.indexOf('?') + 1 );
       //console.log(unixTime);
       //var unixTimeObj = {unix: unixtime, natural: req.params.datetime};
