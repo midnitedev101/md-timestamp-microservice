@@ -24,10 +24,9 @@ if (!process.env.DISABLE_XORIGIN) {
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
-app.get('/hello', function (req, res) {
-  console.log(req);
-  console.log('hello');
-  res.send('GET request to the homepage')
+app.use('/hello', function (req, res) {
+  console.log('Request URL:', req.originalUrl);
+  //res.send('GET request to the homepages');
 });
 
 app.route('/_api/package.json')
