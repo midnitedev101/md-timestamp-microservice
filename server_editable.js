@@ -8,6 +8,7 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
+app.set('json spaces', 2);      // Used to set json object returns with preformatted layout
 
 
 if (!process.env.DISABLE_XORIGIN) {
@@ -49,7 +50,9 @@ app.get('/:datetime', function(req, res) {
         console.log(unixTime);
         //res.send(Date.parse(unixTime));
         var unixTimeObj = {unix: unixTime, natural: req.params.datetime};
-        res.send(JSON.stringify(unixTimeObj, null, 4));
+        // Either of the responses (res.send or res.json) below will output the same format
+        res.send(JSON.stringify(unixTimeObj, null, 2));
+        //res.json(unixTimeObj);
       }
       //var unixTime = url.substring( url.indexOf('?') + 1 );
       //console.log(unixTime);
@@ -57,7 +60,7 @@ app.get('/:datetime', function(req, res) {
       //res.send(unixTimeObj);
   }
   else {
-    console.log('no');
+    //nsole.log('no');
     var dateTime = new Date(req.params.datetime*1000);
     var year = dateTime.getFullYear();
     var month = dateTime.getMonth();
@@ -69,7 +72,10 @@ app.get('/:datetime', function(req, res) {
     var fullDate = monthName[month] + ' ' + date + ', ' + year;
     //dateTimeObj = {unix: req.params.datetime, natural: dateAndTime};
     var dateTimeObj = {unix: req.params.datetime, natural: fullDate};
-    res.send(JSON.stringify(dateTimeObj, null, 4));
+    
+    // Either of the responses (res.send or res.json) below will output the same format
+    res.send(JSON.stringify(dateTimeObj, null, 2));
+    //res.json(dateTimeObj);
   }
   //res.send('hey');
 });
