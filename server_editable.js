@@ -22,6 +22,11 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
+app.get('/testing', function(req, res) {
+  console.log('hi');
+  res.send('hey');
+});
+
 app.use('/public', express.static(process.cwd() + '/public'));
 
 app.route('/_api/package.json')
