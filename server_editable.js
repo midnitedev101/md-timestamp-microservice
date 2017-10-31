@@ -32,7 +32,14 @@ app.get('/:datetime', function(req, res) {
       //console.log(monthName.indexOf(dateParamArr[0]));
     
       if(monthName.indexOf(dateParamArr[0]) !== -1) {
-        var unixTime = new Date('' + monthName.indexOf(dateParamArr[0]) + ' ' + dateParamArr[1] + ' ' + dateParamArr[2]);
+        var monthNum = monthName.indexOf(dateParamArr[0]).toString();
+        if(monthNum.length < 2) {
+          monthNum = "0" + monthNum;
+          //console.log(monthNum);
+        }
+        //console.log('' + (monthName.indexOf(dateParamArr[0])) + ' ' + dateParamArr[1] + ' ' + dateParamArr[2]);
+        //var unixTime = new Date('' + monthName.indexOf(dateParamArr[0] + 1) + ' ' + dateParamArr[1] + ' ' + dateParamArr[2]);
+        var unixTime = new Date(monthNum + ' ' + dateParamArr[1] + ' ' + dateParamArr[2]);
         console.log(unixTime);
       }
       //var unixTime = url.substring( url.indexOf('?') + 1 );
