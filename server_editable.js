@@ -45,11 +45,11 @@ app.get('/:datetime', function(req, res) {
         }
         //console.log('' + (monthName.indexOf(dateParamArr[0])) + ' ' + dateParamArr[1] + ' ' + dateParamArr[2]);
         //var unixTime = new Date('' + monthName.indexOf(dateParamArr[0] + 1) + ' ' + dateParamArr[1] + ' ' + dateParamArr[2]);
-        var unixTime = new Date(monthNum + ' ' + dateParamArr[1] + ' ' + dateParamArr[2]);
+        var unixTime = Math.round(new Date(monthNum + ' ' + dateParamArr[1] + ' ' + dateParamArr[2])/1000);
         console.log(unixTime);
         //res.send(Date.parse(unixTime));
-        var unixTimeObj = {unix: Date.parse(unixTime), natural: req.params.datetime};
-        res.send(unixTimeObj)
+        var unixTimeObj = {unix: unixTime, natural: req.params.datetime};
+        res.send(unixTimeObj);
       }
       //var unixTime = url.substring( url.indexOf('?') + 1 );
       //console.log(unixTime);
@@ -68,7 +68,7 @@ app.get('/:datetime', function(req, res) {
     //var dateAndTime = month + ' ' + date + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
     var fullDate = monthName[month] + ' ' + date + ', ' + year;
     //dateTimeObj = {unix: req.params.datetime, natural: dateAndTime};
-    dateTimeObj = {unix: req.params.datetime, natural: fullDate};
+    var dateTimeObj = {unix: req.params.datetime, natural: fullDate};
     res.send(dateTimeObj);
   }
   //res.send('hey');
