@@ -49,7 +49,7 @@ app.get('/:datetime', function(req, res) {
         console.log(unixTime);
         //res.send(Date.parse(unixTime));
         var unixTimeObj = {unix: unixTime, natural: req.params.datetime};
-        res.send(unixTimeObj);
+        res.send(JSON.stringify(unixTimeObj, null, 4));
       }
       //var unixTime = url.substring( url.indexOf('?') + 1 );
       //console.log(unixTime);
@@ -69,7 +69,7 @@ app.get('/:datetime', function(req, res) {
     var fullDate = monthName[month] + ' ' + date + ', ' + year;
     //dateTimeObj = {unix: req.params.datetime, natural: dateAndTime};
     var dateTimeObj = {unix: req.params.datetime, natural: fullDate};
-    res.send(dateTimeObj);
+    res.send(JSON.stringify(dateTimeObj, null, 4));
   }
   //res.send('hey');
 });
