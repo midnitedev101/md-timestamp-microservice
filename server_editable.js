@@ -23,7 +23,7 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
-app.get('/testing', function(req, res) {
+app.get('/', function(req, res) {
   console.log('hi');
   res.send('hey');
 });
