@@ -25,19 +25,14 @@ if (!process.env.DISABLE_XORIGIN) {
 
 app.get('/:datetime', function(req, res) {
   //console.log(req.params.datetime);
-  var dateTimeObj = {};
   if (isNaN(req.params.datetime)) {
       console.log('yes');
-      var dateTime = new Date(req.params.datetime*1000);
-      var year = dateTime.getFullYear();
-      var month = date.getMonth();
-      var date = dateTime.getDate();
-      var hour = dateTime.getHours();
-      var min = dateTime.getMinutes();
-      var sec = dateTime.getSeconds();
-      var dateAndTime = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-      dateTimeObj = {unix: req.params.datetime, natural: dateAndTime};
-      res.send(dateTimeObj);
+      console.log(req.params.datetime);
+      
+      //var unixTime = url.substring( url.indexOf('?') + 1 );
+      //console.log(unixTime);
+      //var unixTimeObj = {unix: unixtime, natural: req.params.datetime};
+      //res.send(unixTimeObj);
   }
   else {
     console.log('no');
