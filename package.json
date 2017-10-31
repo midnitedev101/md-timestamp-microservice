@@ -3,7 +3,7 @@
 	"dependencies": {
 		"express": "^4.14.0"
 	},
-	"main": "server.js",
+	"main": "server_editable.js",
 	"scripts": {
 		"start": "node server.js"
 	},
