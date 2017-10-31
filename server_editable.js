@@ -23,8 +23,21 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
-app.get('/', function(req, res) {
-  console.log('hi');
+app.get('/:datetime', function(req, res) {
+  //console.log(req.params.datetime);
+  var dateTimeObj = {};
+  if (isNaN(req.params.datetime)) {
+      var dateTime = new Date(req.params.datetime*1000);
+      var year = dateTime.getFullYear();
+      var month = months[dateTime.getMonth()];
+      var date = dateTime.getDate();
+      var hour = a.getHours();
+      var min = dateTime.getMinutes();
+      var sec = dateTime.getSeconds();
+      var dateAndTime = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+      dateTimeObj = {unix: req.params.datetime, natural: dateAndTime}
+      res.send();
+  }
   res.send('hey');
 });
 
