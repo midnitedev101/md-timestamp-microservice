@@ -54,13 +54,16 @@ app.get('/:datetime', function(req, res) {
         res.send(JSON.stringify(unixTimeObj, null, 2));
         //res.json(unixTimeObj);
       }
+      else {
+        res.send({unix: null, natural: null});
+      }
       //var unixTime = url.substring( url.indexOf('?') + 1 );
       //console.log(unixTime);
       //var unixTimeObj = {unix: unixtime, natural: req.params.datetime};
       //res.send(unixTimeObj);
   }
   else {
-    //nsole.log('no');
+    //console.log('no');
     var dateTime = new Date(req.params.datetime*1000);
     var year = dateTime.getFullYear();
     var month = dateTime.getMonth();
